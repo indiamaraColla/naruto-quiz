@@ -10,31 +10,20 @@ import Button from '../src/components/Button';
 function LoadingWidget() {
   return (
     <Widget>
-      <Widget.Header>
-        Carregando...
-      </Widget.Header>
+      <Widget.Header>Carregando...</Widget.Header>
 
-      <Widget.Content>
-        [Desafio do Loading]
-      </Widget.Content>
+      <Widget.Content>[Desafio do Loading]</Widget.Content>
     </Widget>
   );
 }
 
-function QuestionWidget({
-  question,
-  questionIndex,
-  totalQuestions,
-  onSubmit,
-}) {
+function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
   const questionId = `question__${questionIndex}`;
   return (
     <Widget>
       <Widget.Header>
         {/* <BackLinkArrow href="/" /> */}
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+        <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
@@ -47,12 +36,8 @@ function QuestionWidget({
         src={question.image}
       />
       <Widget.Content>
-        <h2>
-          {question.title}
-        </h2>
-        <p>
-          {question.description}
-        </p>
+        <h2>{question.title}</h2>
+        <p>{question.description}</p>
 
         <form
           onSubmit={(infosDoEvento) => {
@@ -63,27 +48,14 @@ function QuestionWidget({
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
             return (
-              <Widget.Topic
-                as="label"
-                htmlFor={alternativeId}
-              >
-                <input
-                  // style={{ display: 'none' }}
-                  id={alternativeId}
-                  name={questionId}
-                  type="radio"
-                />
+              <Widget.Topic as="label" htmlFor={alternativeId}>
+                <input id={alternativeId} name={questionId} type="radio" />
                 {alternative}
               </Widget.Topic>
             );
           })}
 
-          {/* <pre>
-            {JSON.stringify(question, null, 4)}
-          </pre> */}
-          <Button type="submit">
-            Confirmar
-          </Button>
+          <Button type="submit">Confirmar</Button>
         </form>
       </Widget.Content>
     </Widget>
@@ -102,16 +74,10 @@ export default function QuizPage() {
   const questionIndex = currentQuestion;
   const question = db.questions[questionIndex];
 
-  // [React chama de: Efeitos || Effects]
-  // React.useEffect
-  // atualizado === willUpdate
-  // morre === willUnmount
   React.useEffect(() => {
-    // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
     }, 1 * 1000);
-  // nasce === didMount
   }, []);
 
   function handleSubmitQuiz() {
