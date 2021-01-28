@@ -11,7 +11,6 @@ import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
-import QuizContainer from '../src/components/QuizContainer';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -20,17 +19,28 @@ import QuizContainer from '../src/components/QuizContainer';
 //   background-position: center;
 // `;
 
+const QuizContainer = styled.div`
+  width: 100%;
+  max-width: 350px;
+  padding-top: 45px;
+  margin: auto 10%;
+  @media screen and (max-width: 500px) {
+    margin: auto;
+    padding: 15px;
+  }
+`;
+
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
 
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <QuizLogo />
       <Head>
         <title>{db.title}</title>
       </Head>
       <QuizContainer>
-        <QuizLogo />
         <Widget>
           <Widget.Header>
             <h1>{db.title}</h1>
@@ -60,8 +70,11 @@ export default function Home() {
         <Widget>
           <Widget.Content>
             <h1>Quizes da Galera</h1>
+            <br />
 
-            <p>lorem ipsum dolor sit amet...</p>
+            <a href="https://lotr-quiz.filipe1309.vercel.app/">Quiz do Senhor dos Anéis</a>
+
+            <a href="https://imersao-react-next.dayana-sog.vercel.app/">Quiz desenvolvedor front-end:</a>
           </Widget.Content>
         </Widget>
         <Footer />
