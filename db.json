@@ -1,60 +1,54 @@
 {
-  "bg": "https://www.hitalent.co/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMmJDQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1452099b706ad7d079f7a3a4dd5d702ebeeae45f/HiTalent.png",
-  "title": "Quiz JavaScript #AluraQuiz",
-  "description": "Um quiz rápido sobre o mundo do JavaScript",
+  "bg": "https://criticalhits.com.br/wp-content/uploads/2020/05/naruto-shippuden-quiz-32-perguntas-01.jpg",
+  "title": "Quiz Naruto",
+  "description": "Um quiz rápido do universo NARUTO",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/j5P0DQIOf4PonLi55G/giphy.gif",
-      "title": "Qual a diferença entre = , == e === ?",
+      "image": "https://i.imgur.com/AfhCiQ7.gif",
+      "title": "Qual o maior desejo do Naruto?",
       "description": "Pergunta fácil em!",
       "answer": 1,
-      "alternatives": [
-        "São a mesma coisa",
-        "O = significa atribuição de valor. Já == verifica a igualdade do valor, enquanto === verifica valor e tipo de variável."
-      ]
+      "alternatives": ["Ser reconhecido por todos?", "Ser Hokage?", "Conhecer seus pais?"]
     },
     {
-      "image": "https://media.giphy.com/media/Ie2Hs3A0uJRtK/giphy.gif",
-      "title": "Que tipos de dados são suportados em JavaScript?",
+      "image": "https://i.pinimg.com/originals/8c/f6/83/8cf683f6b64d0af7425a864710d89ccc.gif",
+      "title": "Qual o nome da Equipe 07?",
       "description": "E agora? Você sabe?",
-      "answer": 0,
+      "answer": 2,
       "alternatives": [
-        "Number, String, Undefined, Null e Bool.",
-        "Int, String, Undefined, Null e Bool."
+        "Kiba Inuzuka, Hinata Hyuga e Shino Aburame",
+        "Neji Hyuga, Tenten e Rock Lee",
+        "Naruto Uzumaki, Sakura Haruno e Sasuke Uchiha"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/iI4vhciiVh2b3j9sgo/giphy.gif",
-      "title": "Qual a diferença de window e global?",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2b5f35fe-8732-40f3-b47e-cb240a7a9475/de0v9lz-52235b9d-39f2-4faa-a6a0-32493d5c09ec.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMmI1ZjM1ZmUtODczMi00MGYzLWI0N2UtY2IyNDBhN2E5NDc1XC9kZTB2OWx6LTUyMjM1YjlkLTM5ZjItNGZhYS1hNmEwLTMyNDkzZDVjMDllYy5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cHS9G9o4BEkhv2SYMO4a5OTp4BfHkj4fwHyTWjXAW38",
+      "title": "Qual o nome do Restaurante que o Naruto ia comer?",
       "answer": 1,
-      "alternatives": [
-        "São a mesma coisa",
-        "window é o escopo global no browser, e global no node"
-      ]
+      "alternatives": ["Yakiniku", "Ichiraku Ramen", "Ramen Konoha"]
     },
     {
-      "image": "https://media.giphy.com/media/iI4vhciiVh2b3j9sgo/giphy.gif",
-      "title": "Qual a forma antiga de trabalhar com AJAX na Web?",
+      "image": "https://pa1.narvii.com/6282/7c42c2f73df1838c1c9b39af0bf59be69d7e68c0_hq.gif",
+      "title": "Onde naruto nasceu?",
       "answer": 1,
-      "alternatives": [
-        "JSONHttpRequest",
-        "XMLHttpRequest",
-        "fetch"
-      ]
+      "alternatives": ["País da Terra", "País do Fogo", "País da Água"]
+    },
+    {
+      "image": "https://i.pinimg.com/originals/9d/cc/1f/9dcc1f40464f056be8ac5a12b5fa44b6.gif",
+      "title": "Qual o nome da raposa de sete caldas?",
+      "answer": 1,
+      "alternatives": ["Juubi", "Kurama", "Matatabi"]
     }
   ],
-  "external": [
-    "https://aluraquiz-css.omariosouto.vercel.app/",
-    "https://aluraquiz-devsoutinho.omariosouto.vercel.app/"
-  ],
+  "external": ["https://lotr-quiz.filipe1309.vercel.app/", "https://doctor-who-quiz.emanuelpna.vercel.app/"],
   "theme": {
     "colors": {
-      "primary": "#222222",
-      "secondary": "#e89c3f",
-      "mainBg": "#213f4e",
+      "primary": "#212121",
+      "secondary": "#4527a0",
+      "mainBg": "#424242",
       "contrastText": "#FFFFFF",
-      "wrong": "#FF5722",
-      "success": "#4CAF50"
+      "wrong": "#b71c1c",
+      "success": "#673ab7"
     },
     "borderRadius": "4px"
   }

@@ -7,32 +7,36 @@ import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import AlternativesForm from '../src/components/AlternativesForm';
 import Button from '../src/components/Button';
+import Footer from '../src/components/Footer';
 
 function ResultWidget({ results }) {
   return (
     <Widget>
-      <Widget.Header>Tela de Resultado:</Widget.Header>
-
+      <Widget.Header>Resultado:</Widget.Header>
+      {results.filter.length >= 0 && (
+        <img
+          alt="Descrição"
+          style={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+          }}
+          src="https://1.bp.blogspot.com/-P0DJ2puHqnA/UjNxjbnhQeI/AAAAAAAAAec/1ClCmHNKF7U/s1600/tumblr_mob13gDScv1sr90jxo1_500.gif"
+        />
+      )}
+      {/* {results.filter.length <= 0 && (
+        <img
+          alt="Descrição"
+          style={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+          }}
+          src="https://i.pinimg.com/originals/f9/80/3b/f9803b18a87e275682c6ca6ca10419a0.gif"
+        />
+      )} */}
       <Widget.Content>
-        <p>
-          Você acertou{' '}
-          {/* {results.reduce((somatoriaAtual, resultAtual) => {
-            const isAcerto = resultAtual === true;
-            if (isAcerto) {
-              return somatoriaAtual + 1;
-            }
-            return somatoriaAtual;
-          }, 0)} */}
-          {results.filter((x) => x).length} perguntas
-        </p>
-        <ul>
-          {results.map((result, index) => (
-            <li key={`result__${result}`}>
-              #{index + 1} Resultado:
-              {result === true ? 'Acertou' : 'Errou'}
-            </li>
-          ))}
-        </ul>
+        <p>Você acertou {results.filter((x) => x).length} perguntas</p>
       </Widget.Content>
     </Widget>
   );
@@ -66,7 +70,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
         alt="Descrição"
         style={{
           width: '100%',
-          height: '150px',
+          height: '300px',
           objectFit: 'cover',
         }}
         src={question.image}
@@ -111,9 +115,6 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
             );
           })}
 
-          {/* <pre>
-            {JSON.stringify(question, null, 4)}
-          </pre> */}
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
@@ -143,10 +144,6 @@ export default function QuizPage() {
     setResults([...results, result]);
   }
 
-  // [React chama de: Efeitos || Effects]
-  // React.useEffect
-  // atualizado === willUpdate
-  // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
     setTimeout(() => {

@@ -15,35 +15,15 @@ import loadingAnimation from './animations/loading.json';
 function ResultWidget({ results }) {
   return (
     <Widget>
-      <Widget.Header>
-        Tela de Resultado:
-      </Widget.Header>
+      <Widget.Header>Tela de Resultado:</Widget.Header>
 
       <Widget.Content>
-        <p>
-          Você acertou
-          {' '}
-          {/* {results.reduce((somatoriaAtual, resultAtual) => {
-            const isAcerto = resultAtual === true;
-            if (isAcerto) {
-              return somatoriaAtual + 1;
-            }
-            return somatoriaAtual;
-          }, 0)} */}
-          {results.filter((x) => x).length}
-          {' '}
-          perguntas
-        </p>
+        <p>Você acertou {results.filter((x) => x).length} perguntas</p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
-              #
-              {index + 1}
-              {' '}
-              Resultado:
-              {result === true
-                ? 'Acertou'
-                : 'Errou'}
+              #{index + 1} Resultado:
+              {result === true ? 'Acertou' : 'Errou'}
             </li>
           ))}
         </ul>
@@ -55,9 +35,7 @@ function ResultWidget({ results }) {
 function LoadingWidget() {
   return (
     <Widget>
-      <Widget.Header>
-        Carregando...
-      </Widget.Header>
+      <Widget.Header>Carregando...</Widget.Header>
 
       <Widget.Content style={{ display: 'flex', justifyContent: 'center' }}>
         <Lottie
@@ -71,13 +49,7 @@ function LoadingWidget() {
   );
 }
 
-function QuestionWidget({
-  question,
-  questionIndex,
-  totalQuestions,
-  onSubmit,
-  addResult,
-}) {
+function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, addResult }) {
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
@@ -88,9 +60,7 @@ function QuestionWidget({
     <Widget>
       <Widget.Header>
         <BackLinkArrow href="/" />
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+        <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
@@ -103,12 +73,8 @@ function QuestionWidget({
         src={question.image}
       />
       <Widget.Content>
-        <h2>
-          {question.title}
-        </h2>
-        <p>
-          {question.description}
-        </p>
+        <h2>{question.title}</h2>
+        <p>{question.description}</p>
 
         <AlternativesForm
           onSubmit={(infosDoEvento) => {
@@ -146,9 +112,6 @@ function QuestionWidget({
             );
           })}
 
-          {/* <pre>
-            {JSON.stringify(question, null, 4)}
-          </pre> */}
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
@@ -176,22 +139,15 @@ export default function QuizPage({ externalQuestions, externalBg }) {
 
   function addResult(result) {
     // results.push(result);
-    setResults([
-      ...results,
-      result,
-    ]);
+    setResults([...results, result]);
   }
 
-  // [React chama de: Efeitos || Effects]
-  // React.useEffect
-  // atualizado === willUpdate
-  // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
     }, 1 * 2000);
-  // nasce === didMount
+    // nasce === didMount
   }, []);
 
   function handleSubmitQuiz() {
