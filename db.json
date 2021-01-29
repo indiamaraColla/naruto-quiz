@@ -40,7 +40,12 @@
       "alternatives": ["Juubi", "Kurama", "Matatabi"]
     }
   ],
-  "external": ["https://lotr-quiz.filipe1309.vercel.app/", "https://doctor-who-quiz.emanuelpna.vercel.app/"],
+  "external": [
+    "https://lotr-quiz.filipe1309.vercel.app/",
+    "https://doctor-who-quiz.emanuelpna.vercel.app/",
+    "https://quiz-dragon-ball-immersion-alura-next-js.vercel.app/",
+    "https://ai-quiz.idcesares.vercel.app/"
+  ],
   "theme": {
     "colors": {
       "primary": "#212121",

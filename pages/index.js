@@ -120,7 +120,7 @@ export default function Home() {
           animate="show"
         />
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/indiamarasiqueira/naruto-quiz" />
+      <GitHubCorner projectUrl="https://github.com/indiamarasiqueira" />
     </QuizBackground>
   );
 }

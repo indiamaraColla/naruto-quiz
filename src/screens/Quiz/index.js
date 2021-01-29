@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Lottie } from '@crello/react-lottie';
+// import { Lottie } from '@crello/react-lottie';
 // import db from '../../../db.json';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
@@ -11,7 +11,7 @@ import AlternativesForm from '../../components/AlternativesForm';
 import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
 
-import loadingAnimation from './animations/loading.json';
+// import loadingAnimation from './animations/loading.json';
 
 function ResultWidget({ results }) {
   const router = useRouter();
@@ -55,18 +55,19 @@ function ResultWidget({ results }) {
 
 function LoadingWidget() {
   return (
-    <Widget>
+    <>
       <Widget.Header>Carregando...</Widget.Header>
 
-      <Widget.Content style={{ display: 'flex', justifyContent: 'center' }}>
-        <Lottie
-          width="200px"
-          height="200px"
-          className="lottie-container basic"
-          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
-        />
-      </Widget.Content>
-    </Widget>
+      <img
+        alt="Descrição"
+        style={{
+          width: '100%',
+          height: '300px',
+          objectFit: 'cover',
+        }}
+        src="https://i.pinimg.com/originals/82/1a/c1/821ac14d1fc011268367c04b66035f97.gif"
+      />
+    </>
   );
 }
 
@@ -106,7 +107,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
               onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-            }, 3 * 1000);
+            }, 10 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -125,7 +126,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
                   style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
-                  onChange={() => setSelectedAlternative(alternativeIndex)}
+                  onClick={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
                 />
                 {alternative}
@@ -133,14 +134,21 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
             );
           })}
 
-          {/* <pre>
-            {JSON.stringify(question, null, 4)}
-          </pre> */}
-          <Button type="submit" disabled={!hasAlternativeSelected}>
-            Confirmar
-          </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
+          {isQuestionSubmited ? (
+            <>
+              {isCorrect && (
+                <Button style={{ color: '#fff', backgroundColor: '#673ab7', marginBottom: '0' }}>Você acertou!</Button>
+              )}
+
+              {!isCorrect && (
+                <Button style={{ color: '#fff', backgroundColor: '#b71c1c', marginBottom: '0' }}>Você errou!</Button>
+              )}
+            </>
+          ) : (
+            <Button type="submit" disabled={!hasAlternativeSelected}>
+              Confirmar
+            </Button>
+          )}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
@@ -166,16 +174,11 @@ export default function QuizPage({ externalQuestions, externalBg }) {
     setResults([...results, result]);
   }
 
-  // [React chama de: Efeitos || Effects]
-  // React.useEffect
-  // atualizado === willUpdate
-  // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
     }, 1 * 2000);
-    // nasce === didMount
   }, []);
 
   function handleSubmitQuiz() {

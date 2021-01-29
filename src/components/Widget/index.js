@@ -21,6 +21,10 @@ const Widget = styled.div`
     font-weight: 400;
     line-height: 1;
   }
+
+  @media all and (max-width: 600px) {
+    margin-top: 84px;
+  }
 `;
 
 Widget.Header = styled.header`
