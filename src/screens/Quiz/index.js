@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Lottie } from '@crello/react-lottie';
 // import db from '../../../db.json';
 import Widget from '../../components/Widget';
@@ -13,20 +14,42 @@ import BackLinkArrow from '../../components/BackLinkArrow';
 import loadingAnimation from './animations/loading.json';
 
 function ResultWidget({ results }) {
+  const router = useRouter();
+  const { name } = router.query;
+
+  const resultQuestions = results.filter((x) => x).length;
+
   return (
     <Widget>
-      <Widget.Header>Tela de Resultado:</Widget.Header>
+      <Widget.Header>Resultado:</Widget.Header>
+      {resultQuestions === 0 && (
+        <img
+          alt="Descrição"
+          style={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+          }}
+          src="https://i.pinimg.com/originals/f9/80/3b/f9803b18a87e275682c6ca6ca10419a0.gif"
+        />
+      )}
+      {resultQuestions !== 0 && (
+        <img
+          alt="Descrição"
+          style={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+          }}
+          src="https://1.bp.blogspot.com/-P0DJ2puHqnA/UjNxjbnhQeI/AAAAAAAAAec/1ClCmHNKF7U/s1600/tumblr_mob13gDScv1sr90jxo1_500.gif"
+        />
+      )}
 
       <Widget.Content>
-        <p>Você acertou {results.filter((x) => x).length} perguntas</p>
-        <ul>
-          {results.map((result, index) => (
-            <li key={`result__${result}`}>
-              #{index + 1} Resultado:
-              {result === true ? 'Acertou' : 'Errou'}
-            </li>
-          ))}
-        </ul>
+        <p>Você acertou {results.filter((x) => x).length} perguntas </p>
+
+        <p>{`${resultQuestions === 0 ? 'Que pena!!' : 'Mandou bem!!'} ${name} `}</p>
+        <p>{resultQuestions === 0 ? 'Você errou todas' : `${name} acertou ${resultQuestions} pergunta(s)`}</p>
       </Widget.Content>
     </Widget>
   );
@@ -112,6 +135,9 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
             );
           })}
 
+          {/* <pre>
+            {JSON.stringify(question, null, 4)}
+          </pre> */}
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
@@ -142,6 +168,10 @@ export default function QuizPage({ externalQuestions, externalBg }) {
     setResults([...results, result]);
   }
 
+  // [React chama de: Efeitos || Effects]
+  // React.useEffect
+  // atualizado === willUpdate
+  // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
     setTimeout(() => {
