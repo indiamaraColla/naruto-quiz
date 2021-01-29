@@ -46,8 +46,6 @@ function ResultWidget({ results }) {
       )}
 
       <Widget.Content>
-        <p>Você acertou {results.filter((x) => x).length} perguntas </p>
-
         <p>{`${resultQuestions === 0 ? 'Que pena!!' : 'Mandou bem!!'} ${name} `}</p>
         <p>{resultQuestions === 0 ? 'Você errou todas' : `${name} acertou ${resultQuestions} pergunta(s)`}</p>
       </Widget.Content>
