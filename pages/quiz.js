@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useRouter } from 'next/router';
+
 import db from '../db.json';
 import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
@@ -10,10 +12,26 @@ import Button from '../src/components/Button';
 import Footer from '../src/components/Footer';
 
 function ResultWidget({ results }) {
+  const router = useRouter();
+  const { name } = router.query;
+
+  const resultQuestions = results.filter((x) => x).length;
+
   return (
     <Widget>
       <Widget.Header>Resultado:</Widget.Header>
-      {results.filter.length >= 0 && (
+      {resultQuestions === 0 && (
+        <img
+          alt="Descrição"
+          style={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+          }}
+          src="https://i.pinimg.com/originals/f9/80/3b/f9803b18a87e275682c6ca6ca10419a0.gif"
+        />
+      )}
+      {resultQuestions !== 0 && (
         <img
           alt="Descrição"
           style={{
@@ -24,19 +42,12 @@ function ResultWidget({ results }) {
           src="https://1.bp.blogspot.com/-P0DJ2puHqnA/UjNxjbnhQeI/AAAAAAAAAec/1ClCmHNKF7U/s1600/tumblr_mob13gDScv1sr90jxo1_500.gif"
         />
       )}
-      {/* {results.filter.length <= 0 && (
-        <img
-          alt="Descrição"
-          style={{
-            width: '100%',
-            height: '300px',
-            objectFit: 'cover',
-          }}
-          src="https://i.pinimg.com/originals/f9/80/3b/f9803b18a87e275682c6ca6ca10419a0.gif"
-        />
-      )} */}
+
       <Widget.Content>
-        <p>Você acertou {results.filter((x) => x).length} perguntas</p>
+        <p>Você acertou {results.filter((x) => x).length} perguntas </p>
+
+        <p>{`${resultQuestions === 0 ? 'Que pena!!' : 'Mandou bem!!'} ${name} `}</p>
+        <p>{resultQuestions === 0 ? 'Você errou todas' : `${name} acertou ${resultQuestions} pergunta(s)`}</p>
       </Widget.Content>
     </Widget>
   );
